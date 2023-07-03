@@ -1,10 +1,10 @@
 <#
-Copies an excel file to a CSV file.
+Copies an excel file to a CSV file. Works with xlsx and xlsm files.
 
 Has two optional parameters that can be used when invoking the script:
 InputPath: Path to excel file that will be copied. Must be fully qualified path including file name and extension.
 OutputPath: Path to export CSV file. Must be fully qualified path including file name and extension.
-#> 
+#>
 
 # params
 param (
@@ -81,9 +81,12 @@ function Validate-InputPath($path)
 {
     $trimmedPath = $path.Trim('"')
 
-    if (-not(Test-FileHasExtension -FileName $trimmedPath -Extension ".XLSX"))
+    $isXlsx = Test-FileHasExtension -FileName $trimmedPath -Extension ".XLSX"
+    $isXlsm = Test-FileHasExtension -FileName $trimmedPath -Extension ".XLSM"
+
+    if (-not($isXlsx) -and -not($isXlsm))
     {
-        Write-Warning "File is not an XLSX."
+        Write-Warning "File is not an XLSX or XLSM."
         return $false
     }
 
