@@ -2,8 +2,8 @@
 Copies an excel file to a CSV file. Works with xlsx and xlsm files.
 
 Has two optional parameters that can be used when invoking the script:
-InputPath: Path to excel file that will be copied. Must be fully qualified path including file name and extension.
-OutputPath: Path to export CSV file. Must be fully qualified path including file name and extension.
+InputPath: Path to excel file that will be copied. Must be a fully qualified path (drive letter, folder path, file name, file extension).
+OutputPath: Path to export CSV file. Must be a fully qualified path (drive letter, folder path, file name, file extension).
 #>
 
 # params
